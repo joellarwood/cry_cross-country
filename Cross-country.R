@@ -31,7 +31,7 @@ data <- read.csv(file = "x-cultural_data.csv")
 install.packages("psych")
 library("psych")
 
-#total N participants 
+ #total N participants 
 
 #mean age
 mean(data$age)
@@ -441,12 +441,14 @@ plot1<- afex_plot(object = anova_countryxhelp, x = "helped", trace = "live",
                   data_geom = ggplot2::geom_violin, 
                   data_arg = list(width = 0.5),
                   factor_levels = list(helped = c("No help", "Helped"),
-                                       live = c("Australia", "Croatia","Netherland", "Thailand", "UK")),
-                  legend_title = "Country") + labs (
-                    x = "Helped", ##X-axis label
-                    y = "Mood")   ##y-axis label
-plot1 + jtools::theme_apa() + theme(legend.position="bottom")
+                                       live = c("Australia", "Croatia","Netherland", "Thailand", "UK")), 
+                  legend_title = "Country") + 
+   ggplot2::labs( x = "Helped",
+                  y = "Mood")  +  
+   ggplot2::ylim(2, 6) +
+   jtools::theme_apa(legend.pos = "bottom")
 
+print(plot1)
 ###################   correlation between mood following crying and BACS_social ###################
 library("Hmisc")
 
